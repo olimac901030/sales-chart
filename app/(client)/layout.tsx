@@ -20,7 +20,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={roboto.className}>
         <style>{`@keyframes breathe{0%,100%{opacity:1;}50%{opacity:0.4;}}}`}</style>

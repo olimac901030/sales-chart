@@ -31,12 +31,13 @@ export class BaseRest implements Rest {
   GET = () => this.#notAllowed();
   DELETE = () => this.#notAllowed();
   PATCH = () => this.#notAllowed();
-  OPTION = () => this.success();
+  OPTIONS = () => this.success();
 
   call = async (req: NextApiRequest, res: NextApiResponse) => {
     await connect();
     this.#req = req;
     this.#res = res;
+    console.log(`[${req.method}] ${req.url}`);
     return this[this.method]();
   };
 

@@ -11,7 +11,8 @@ const STYLE: SxProps = {
   '& > svg': {
     animation: `2.8s ease-in-out 0.5s infinite normal none running breathe`,
     width: 'auto',
-    height: 200
+    height: '90px',
+    mb: '1rem'
   }
 };
 export default function Loading() {
