@@ -1,26 +1,52 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "paths": {
+      "#main/*": ["app/(client)/(modules)/(main)/*"],
+      "#gateway/*": ["app/(client)/(modules)/gateway/*"],
+      "#peripheral/*": ["app/(client)/(modules)/peripheral/*"],
+      "$common/*": ["app/(server)/common/*"],
+      "$config/*": ["app/(server)/common/config/*"],
+      "$ctrl/*": ["app/(server)/controllers/*"],
+      "$rest/*": ["app/(server)/rest/*"],
+      "$model/*": ["app/(server)/models/*"],
+      "$repo/*": ["app/(server)/repositories/*"],
+      "@/*": ["app/(client)/common/types/*"],
+      "@component/*": ["app/(client)/components/*"],
+      "@config/*": ["app/(client)/common/config/*"],
+      "@field/*": ["app/(client)/components/fields/*"],
+      "@form/*": ["app/(client)/common/forms/*"],
+      "@theme/*": ["app/(client)/common/theme/*"],
+      "@ui/*": ["app/(client)/components/ui/*"],
+      "@util/*": ["app/(client)/common/utils/*"],
+      "@validator/*": ["app/(client)/common/validators/*"],
+      "~/*": ["app/(shared)/types/*"],
+      "~config/*": ["app/(shared)/config/*"],
+      "~svc/*": ["app/(shared)/services/*"],
+      "~util/*": ["app/(shared)/utils/*"]
+    },
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "es6"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
