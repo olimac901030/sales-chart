@@ -1,8 +1,6 @@
 import { CategoriesModel } from '$model/categories.model';
 import { ICategories } from '~/categories.type';
-import { PeripheralModel } from '$model/peripheral.model';
-import { IGateway } from '~/gateway.type';
-import { ProductsModel } from '$model/products.model';
+import { ProductsModel } from '$model/product.model';
 
 async function read(): Promise<ICategories[] | null> {
   return CategoriesModel.find({ id: { $ne: -1 } }).select('name');
