@@ -15,18 +15,25 @@ const STATUS = [ConnectionStates.disconnected, ConnectionStates.disconnecting, C
  * Connect to the in-memory database.
  */
 export const connect = async () => {
-  const customPath = fs.mkdtempSync(path.join(os.tmpdir(), 'myMongoDBData')); // Directorio temporal
+  const customPath = path.join(os.tmpdir(), 'myMongoDBData'); // Directorio en la ubicación temporal del sistema
 
   const dataFilePath = path.join(customPath, 'data.json'); // Ruta para el archivo de datos
-  if (!mongoMemoryServer)
-    mongoMemoryServer = await MongoMemoryServer.create({
-      instance: {
-        dbName: 'myDatabase', // Nombre de la base de datos
-        ip: '127.0.0.1', // Dirección IP
-        port: 27017, // Puerto
-        dbPath: customPath
-      }
-    });
+
+  if (!mongoMemoryServer) {
+    // Verificar si el directorio existe, si no, crearlo
+    if (!fs.existsSync(customPath)) {
+      await fs.mkdirSync(customPath, { recursive: true });
+      mongoMemoryServer = await MongoMemoryServer.create({
+        instance: {
+          dbName: 'myDatabase', // Nombre de la base de datos
+          ip: '127.0.0.1', // Dirección IP
+          port: 27017, // Puerto
+          dbPath: customPath
+        }
+      });
+    }
+  }
+
   if (STATUS.includes(mongoose.connection.readyState)) {
     await mongoose.connect(mongoMemoryServer.getUri(), {});
     await populate();
