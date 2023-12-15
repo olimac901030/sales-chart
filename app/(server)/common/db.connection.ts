@@ -4,6 +4,7 @@ import { CategoryModel } from '$model/category.model';
 import { ProductModel } from '$model/product.model';
 import { BrandModel } from '$model/brand.model';
 import { SaleModel } from '$model/sale.model';
+import * as fs from 'fs';
 
 let mongoMemoryServer: MongoMemoryServer = undefined as unknown as MongoMemoryServer;
 
@@ -13,6 +14,15 @@ const STATUS = [ConnectionStates.disconnected, ConnectionStates.disconnecting, C
  * Connect to the in-memory database.
  */
 export const connect = async () => {
+  const filePath = './myDataFile.json'; // Ruta del archivo en la raíz del proyecto
+
+  try {
+    // Crea el archivo vacío si no existe
+    fs.accessSync(filePath);
+  } catch (error) {
+    // Si el archivo no existe, lo crea
+    fs.writeFileSync(filePath, '[]', 'utf-8');
+  }
   if (!mongoMemoryServer) {
     mongoMemoryServer = await MongoMemoryServer.create({
       instance: {
