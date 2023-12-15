@@ -57,12 +57,19 @@ async function populate(): Promise<any> {
 
   // Creating sample category and associating products
   const category1 = await CategoryModel.create({ name: 'Cereales' });
+  const category2 = await CategoryModel.create({ name: 'Carnes' });
 
   const product1 = await ProductModel.create({ name: 'Arroz', category: category1.id });
   const product2 = await ProductModel.create({ name: 'Maiz', category: category1.id });
+  const product3 = await ProductModel.create({ name: 'Cerdo', category: category2.id });
+  const product4 = await ProductModel.create({ name: 'Pollo', category: category2.id });
 
   await BrandModel.create({ name: 'Nestle', product: product1.id });
   await BrandModel.create({ name: 'Britania', product: product1.id });
   await BrandModel.create({ name: 'Kellogs', product: product2.id });
   await BrandModel.create({ name: 'Cocacola', product: product2.id });
+  await BrandModel.create({ name: 'Picanha', product: product3.id });
+  await BrandModel.create({ name: 'Palmiche', product: product3.id });
+  await BrandModel.create({ name: 'Pollo Supreme', product: product4.id });
+  await BrandModel.create({ name: 'Pollo Elixir', product: product4.id });
 }
