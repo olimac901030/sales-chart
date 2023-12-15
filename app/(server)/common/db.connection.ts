@@ -19,7 +19,11 @@ export const connect = async () => {
   }
 
   if (STATUS.includes(mongoose.connection.readyState)) {
-    await mongoose.connect(mongoMemoryServer.getUri(), {});
+    if (process.env.MONGODB_URI) {
+      await mongoose.connect(process.env.MONGODB_URI, {});
+    } else {
+      await mongoose.connect(mongoMemoryServer.getUri(), {});
+    }
     await populate();
   }
 };
