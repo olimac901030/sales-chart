@@ -11,6 +11,7 @@ export const Products = observer(function () {
       label="Product"
       options={productStr.getOptions}
       disabled={!productStr.hasItems}
+      loading={productStr.loading}
       onChange={salesReportStr.onChangeProduct}
     />
   );

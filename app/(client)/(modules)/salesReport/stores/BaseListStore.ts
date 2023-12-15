@@ -4,12 +4,15 @@ import { IBase } from '~/base.type';
 
 export class BaseListStore {
   items: IBase[] = [];
+  loading = false;
 
   constructor() {
     makeObservable(this, {
       items: observable,
+      loading: observable,
 
       setItems: action,
+      setLoading: action,
 
       getOptions: computed,
       hasItems: computed
@@ -20,6 +23,9 @@ export class BaseListStore {
 
   setItems = (items: IBase[] = []) => {
     this.items = items;
+  };
+  setLoading = (value = false) => {
+    this.loading = value;
   };
 
   get getOptions(): OptionType[] {
@@ -35,9 +41,21 @@ export class BaseListStore {
 
   // region METHODS
 
-  loadItems = async (): Promise<IBase[] | void> => {
-    return Promise.resolve([]);
+  loadItems = async (value?: string): Promise<IBase[] | void> => {
+    try {
+      this.setLoading(true);
+      await this.fillData(value);
+    } catch (e) {
+      console.log(e);
+      this.setItems();
+    } finally {
+      this.setLoading();
+    }
   };
+  protected fillData = async (value?: string): Promise<IBase[] | void> => {
+    return value ? Promise.resolve([]) : [];
+  };
+
   // endregion
 
   // region EVENTS

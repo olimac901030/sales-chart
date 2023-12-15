@@ -12,7 +12,7 @@ export class BrandStore extends BaseListStore {
 
   // region METHODS
 
-  loadItems = async (productId?: string) => {
+  fillData = async (productId?: string) => {
     if (!productId) this.setItems([]);
     const { ok, data } = await productSvc.getProductBrands(productId);
     console.log({ ok, data });

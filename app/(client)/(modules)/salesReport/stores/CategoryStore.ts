@@ -13,7 +13,7 @@ export class CategoryStore extends BaseListStore {
 
   // region METHODS
 
-  loadItems = async () => {
+  fillData = async () => {
     const { ok, data } = await categorySvc.getAll();
     if (ok) this.setItems(data);
   };

@@ -11,6 +11,7 @@ export const Categories = observer(function () {
       label="Categoría"
       options={categoryStr.getOptions}
       disabled={!categoryStr.hasItems}
+      loading={categoryStr.loading}
       onChange={salesReportStr.onChangeCategory}
     />
   );
