@@ -15,8 +15,6 @@
     "noImplicitThis": true,
     "paths": {
       "#main/*": ["app/(client)/(modules)/(main)/*"],
-      "#gateway/*": ["app/(client)/(modules)/gateway/*"],
-      "#peripheral/*": ["app/(client)/(modules)/peripheral/*"],
       "$common/*": ["app/(server)/common/*"],
       "$config/*": ["app/(server)/common/config/*"],
       "$ctrl/*": ["app/(server)/controllers/*"],
@@ -31,7 +29,6 @@
       "@theme/*": ["app/(client)/common/theme/*"],
       "@ui/*": ["app/(client)/components/ui/*"],
       "@util/*": ["app/(client)/common/utils/*"],
-      "@validator/*": ["app/(client)/common/validators/*"],
       "~/*": ["app/(shared)/types/*"],
       "~config/*": ["app/(shared)/config/*"],
       "~svc/*": ["app/(shared)/services/*"],

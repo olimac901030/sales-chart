@@ -1,6 +1,6 @@
 ## Getting Started
 
-Musala Gateway project, here you can see:
+Sales Report project, here you can see:
 
 ### Install Dependencies
 
