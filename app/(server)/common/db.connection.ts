@@ -3,9 +3,6 @@ import mongoose, { ConnectionStates } from 'mongoose';
 import { CategoryModel } from '$model/category.model';
 import { ProductModel } from '$model/product.model';
 import { BrandModel } from '$model/brand.model';
-import * as fs from 'fs';
-import * as path from 'path';
-import * as os from 'os';
 import { SaleModel } from '$model/sale.model';
 
 let mongoMemoryServer: MongoMemoryServer = undefined as unknown as MongoMemoryServer;
