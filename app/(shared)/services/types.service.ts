@@ -1,4 +1,4 @@
-export type MethodType = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
+export type MethodType = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE' | 'OPTION';
 
 export type ReqOptionType<INPUT> = {
   data?: INPUT;
