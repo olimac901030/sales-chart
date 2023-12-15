@@ -11,7 +11,8 @@ export class BaseListStore {
 
       setItems: action,
 
-      getOptions: computed
+      getOptions: computed,
+      hasItems: computed
     });
   }
 
@@ -23,6 +24,11 @@ export class BaseListStore {
 
   get getOptions(): OptionType[] {
     return this.items.map(({ name: label, _id: value }) => ({ label, value }));
+  }
+
+  get hasItems(): boolean {
+    console.log(this.items.length);
+    return !!this.items.length;
   }
 
   // endregion

@@ -6,7 +6,8 @@ function CategoryService() {
   const { get } = serviceRestFactory(`${EnvClient.API}/categories`);
 
   return {
-    getAll: () => get<ICategory[], undefined>(``)
+    getAll: () => get<ICategory[], undefined>(``),
+    getCategoryProducts: (id?: string) => get<ICategory[], undefined>(`/${id}/products`)
   };
 }
 
