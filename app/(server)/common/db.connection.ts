@@ -14,23 +14,8 @@ const STATUS = [ConnectionStates.disconnected, ConnectionStates.disconnecting, C
  * Connect to the in-memory database.
  */
 export const connect = async () => {
-  const filePath = './myDataFile.json'; // Ruta del archivo en la raíz del proyecto
-
-  try {
-    // Crea el archivo vacío si no existe
-    fs.accessSync(filePath);
-  } catch (error) {
-    // Si el archivo no existe, lo crea
-    fs.writeFileSync(filePath, '[]', 'utf-8');
-  }
   if (!mongoMemoryServer) {
-    mongoMemoryServer = await MongoMemoryServer.create({
-      instance: {
-        dbName: 'myDatabase', // Nombre de la base de datos
-        ip: '127.0.0.1', // Dirección IP
-        port: 27017 // Puerto
-      }
-    });
+    mongoMemoryServer = await MongoMemoryServer.create();
   }
 
   if (STATUS.includes(mongoose.connection.readyState)) {
@@ -90,6 +75,11 @@ async function populate(): Promise<any> {
   const brand6 = await BrandModel.create({ name: 'Palmiche', product: product3.id });
   const brand7 = await BrandModel.create({ name: 'Pollo Supreme', product: product4.id });
   const brand8 = await BrandModel.create({ name: 'Pollo Elixir', product: product4.id });
+  const brand9 = await BrandModel.create({ name: 'Higo1', product: product5.id });
+  const brand10 = await BrandModel.create({ name: 'Claria', product: product6.id });
+  const brand11 = await BrandModel.create({ name: 'Cocina1', product: product7.id });
+  const brand12 = await BrandModel.create({ name: 'Lavadora1', product: product8.id });
+  const brand13 = await BrandModel.create({ name: 'Televisor1', product: product9.id });
 
   await SaleModel.create({ date: new Date('2023-02-01'), amount: 10, brand: brand2.id });
   await SaleModel.create({ date: new Date('2023-03-01'), amount: 30, brand: brand2.id });
@@ -109,4 +99,9 @@ async function populate(): Promise<any> {
   await SaleModel.create({ date: new Date(), amount: 600, brand: brand6.id });
   await SaleModel.create({ date: new Date(), amount: 700, brand: brand7.id });
   await SaleModel.create({ date: new Date(), amount: 800, brand: brand8.id });
+  await SaleModel.create({ date: new Date(), amount: 900, brand: brand9.id });
+  await SaleModel.create({ date: new Date(), amount: 1000, brand: brand10.id });
+  await SaleModel.create({ date: new Date(), amount: 1100, brand: brand11.id });
+  await SaleModel.create({ date: new Date(), amount: 1200, brand: brand12.id });
+  await SaleModel.create({ date: new Date(), amount: 1300, brand: brand13.id });
 }
