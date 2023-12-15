@@ -14,7 +14,7 @@ const STATUS = [ConnectionStates.disconnected, ConnectionStates.disconnecting, C
  * Connect to the in-memory database.
  */
 export const connect = async () => {
-  if (!mongoMemoryServer) {
+  if (!process.env.MONGODB_URI && !mongoMemoryServer) {
     mongoMemoryServer = await MongoMemoryServer.create();
   }
 
