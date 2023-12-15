@@ -73,7 +73,6 @@ async function populate(): Promise<any> {
   const product8 = await ProductModel.create({ name: 'Lavadora', category: category3.id });
   const product9 = await ProductModel.create({ name: 'Televisor', category: category3.id });
 
-  const brand1 = await BrandModel.create({ name: 'Nestle', product: product1.id });
   const brand2 = await BrandModel.create({ name: 'Britania', product: product1.id });
   const brand3 = await BrandModel.create({ name: 'Kellogs', product: product2.id });
   const brand4 = await BrandModel.create({ name: 'Cocacola', product: product2.id });
@@ -82,8 +81,17 @@ async function populate(): Promise<any> {
   const brand7 = await BrandModel.create({ name: 'Pollo Supreme', product: product4.id });
   const brand8 = await BrandModel.create({ name: 'Pollo Elixir', product: product4.id });
 
-  await SaleModel.create({ date: new Date(), amount: 100, brand: brand1.id });
-  await SaleModel.create({ date: new Date(), amount: 300, brand: brand1.id });
+  await SaleModel.create({ date: new Date('2023-02-01'), amount: 10, brand: brand2.id });
+  await SaleModel.create({ date: new Date('2023-03-01'), amount: 30, brand: brand2.id });
+  await SaleModel.create({ date: new Date('2023-04-01'), amount: 10, brand: brand2.id });
+  await SaleModel.create({ date: new Date('2023-05-01'), amount: 150, brand: brand2.id });
+  await SaleModel.create({ date: new Date('2023-06-01'), amount: 10, brand: brand2.id });
+  await SaleModel.create({ date: new Date('2023-07-01'), amount: 10, brand: brand2.id });
+  await SaleModel.create({ date: new Date('2023-08-01'), amount: 25, brand: brand2.id });
+  await SaleModel.create({ date: new Date('2023-09-01'), amount: 63, brand: brand2.id });
+  await SaleModel.create({ date: new Date('2023-10-01'), amount: 10, brand: brand2.id });
+  await SaleModel.create({ date: new Date('2023-11-01'), amount: 18, brand: brand2.id });
+  await SaleModel.create({ date: new Date('2023-12-01'), amount: 10, brand: brand2.id });
   await SaleModel.create({ date: new Date(), amount: 200, brand: brand2.id });
   await SaleModel.create({ date: new Date(), amount: 300, brand: brand3.id });
   await SaleModel.create({ date: new Date(), amount: 400, brand: brand4.id });
