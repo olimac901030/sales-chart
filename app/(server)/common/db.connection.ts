@@ -3,6 +3,9 @@ import mongoose, { ConnectionStates } from 'mongoose';
 import { CategoryModel } from '$model/category.model';
 import { ProductModel } from '$model/product.model';
 import { BrandModel } from '$model/brand.model';
+import * as fs from 'fs';
+import * as path from 'path';
+import * as os from 'os';
 
 let mongoMemoryServer: MongoMemoryServer = undefined as unknown as MongoMemoryServer;
 
@@ -12,12 +15,16 @@ const STATUS = [ConnectionStates.disconnected, ConnectionStates.disconnecting, C
  * Connect to the in-memory database.
  */
 export const connect = async () => {
+  const customPath = fs.mkdtempSync(path.join(os.tmpdir(), 'myMongoDBData')); // Directorio temporal
+
+  const dataFilePath = path.join(customPath, 'data.json'); // Ruta para el archivo de datos
   if (!mongoMemoryServer)
     mongoMemoryServer = await MongoMemoryServer.create({
       instance: {
         dbName: 'myDatabase', // Nombre de la base de datos
         ip: '127.0.0.1', // Dirección IP
-        port: 27017 // Puerto
+        port: 27017, // Puerto
+        dbPath: customPath
       }
     });
   if (STATUS.includes(mongoose.connection.readyState)) {
