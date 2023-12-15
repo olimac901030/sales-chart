@@ -5,6 +5,7 @@ import { observer } from 'mobx-react-lite';
 import { OptionType } from '@/option.type';
 import { FormContext } from '@form/form.context';
 import { Skeleton } from '@ui/index';
+import { SxProps } from '@mui/system';
 
 interface ISelect {
   label: string;
@@ -15,6 +16,14 @@ interface ISelect {
 
   onChange?(value: string): void;
 }
+
+const INPUT_SX = {
+  '&': {
+    '@media(min-width:661px)': {
+      maxWidth: '200px'
+    }
+  }
+} as SxProps;
 
 export const Select = observer(function ({ options, label, name, disabled, loading, onChange }: ISelect) {
   const state = (useContext(FormContext) as any)[String(name)];
@@ -39,7 +48,7 @@ export const Select = observer(function ({ options, label, name, disabled, loadi
     return <Skeleton animation="wave" variant="rectangular" width={210} height={40} sx={{ borderRadius: '4px' }} />;
 
   return (
-    <FormControl fullWidth size="small" sx={{ maxWidth: '200px' }} disabled={disabled}>
+    <FormControl fullWidth size="small" sx={INPUT_SX} disabled={disabled}>
       <InputLabel id={`${state.id}-label`}>{label}</InputLabel>
       <Input
         labelId={`${state.id}-label`}
