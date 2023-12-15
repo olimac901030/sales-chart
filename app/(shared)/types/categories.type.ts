@@ -1,7 +1,4 @@
-export interface IGateway {
+export interface ICategories {
   _id: string;
-  ip: string;
   name: string;
-  peripherals: number;
-  serial: string;
 }

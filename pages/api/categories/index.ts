@@ -1,3 +1,3 @@
-import { gatewayRest } from '$rest/gateways.rest';
+import { categoriesRest } from '$rest/categories.rest';
 
-export default gatewayRest.call;
+export default categoriesRest.call;

@@ -1,31 +1,27 @@
-import { GatewayModel } from '$model/gateway.model';
-import { IGateway } from '~/gateway.type';
-import { PeripheralModel } from '$model/peripheral.model';
+import { CategoriesModel } from '$model/categories.model';
+import { ICategories } from '~/categories.type';
 
-const POPULATE = 'ip name peripherals serial';
+const POPULATE = 'name';
 
-async function create(gateway: Omit<IGateway, '_id'>): Promise<IGateway> {
-  return GatewayModel.create(gateway);
+async function read(): Promise<ICategories[] | null> {
+  return CategoriesModel.find({ id: { $ne: -1 } }).select(POPULATE);
+  //   .populate({ path: 'peripherals', model: PeripheralModel });
 }
 
-async function readById(id: string): Promise<IGateway | null> {
-  return GatewayModel.findById(id)
-    .select(POPULATE)
-    .populate({ path: 'peripherals', model: PeripheralModel }) as Promise<IGateway | null>;
+/**
+ * Inserts fake data into the collection using the Mongoose model.
+ *
+ * @return {Promise} A promise that resolves when the insertion is complete.
+ */
+async function populate(): Promise<any> {
+  const dataToInsert = [
+    { name: 'Comida' },
+    { name: 'Electrodomésticos' }
+    // Add more data as needed
+  ];
+
+  // Insert the data into the collection using the Mongoose model
+  await CategoriesModel.insertMany(dataToInsert);
 }
 
-async function read(): Promise<IGateway[] | null> {
-  return GatewayModel.find({ id: { $ne: -1 } })
-    .select(POPULATE)
-    .populate({ path: 'peripherals', model: PeripheralModel });
-}
-
-async function update(id: string, data: Partial<IGateway>): Promise<IGateway | null> {
-  return GatewayModel.findByIdAndUpdate(id, data).select(POPULATE);
-}
-
-async function remove(id: string): Promise<IGateway | null> {
-  return GatewayModel.findByIdAndRemove(id);
-}
-
-export const GatewayRepository = { create, readById, read, update, remove };
+export const CategoriesRepository = { read, populate };
