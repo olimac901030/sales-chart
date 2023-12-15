@@ -15,7 +15,6 @@ export class BrandStore extends BaseListStore {
   fillData = async (productId?: string) => {
     if (!productId) this.setItems([]);
     const { ok, data } = await productSvc.getProductBrands(productId);
-    console.log({ ok, data });
     if (ok) this.setItems(data);
   };
   // endregion

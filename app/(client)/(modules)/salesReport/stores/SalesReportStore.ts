@@ -10,8 +10,6 @@ export class SalesReportStore {
   items: TFormSaleFilters[] = [];
 
   constructor() {
-    this.setValidators();
-    void this.loadGateways();
     makeObservable(this, {
       items: observable,
       form: observable,
@@ -33,17 +31,7 @@ export class SalesReportStore {
   // endregion
 
   // region METHODS
-  setValidators = () => {
-    // const { serial, ip, name } = this.form;
-    // serial.withValidator(vRequired);
-    // name.withValidator(vRequired);
-    // ip.withValidator(vRequired, vIsIpV4);
-  };
 
-  loadGateways = async () => {
-    // const { ok, data } = await gatewaySvc.getAll();
-    // if (ok) this.setItems(data);
-  };
   // endregion
 
   // region EVENTS
@@ -53,7 +41,6 @@ export class SalesReportStore {
     void productStr.loadItems(value);
   };
   onChangeProduct = (value: string) => {
-    console.log('onChangeProduct: ', value);
     this.form.brand.reset();
     void brandStr.loadItems(value);
   };

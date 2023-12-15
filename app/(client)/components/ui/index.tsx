@@ -5,7 +5,6 @@ export { default as CircularProgress } from '@mui/material/CircularProgress';
 export { default as Container } from '@mui/material/Container';
 export { default as CssBaseline } from '@mui/material/CssBaseline';
 export { default as Grid } from '@mui/material/Grid';
-export type { PaperProps } from '@mui/material/Paper';
 export { default as Stack } from '@mui/material/Stack';
 export { default as SvgIcon } from '@mui/material/SvgIcon';
 export { default as Typography } from '@mui/material/Typography';

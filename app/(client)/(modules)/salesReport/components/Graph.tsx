@@ -2,10 +2,11 @@
 
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
+import { Box } from '@ui/index';
 
 export function Graph() {
   return (
-    <div>
+    <Box>
       <HighchartsReact
         highcharts={Highcharts}
         options={{
@@ -43,6 +44,6 @@ export function Graph() {
         }}
         constructorType={'chart'}
       />
-    </div>
+    </Box>
   );
 }

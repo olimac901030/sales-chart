@@ -15,7 +15,6 @@ export class ProductStore extends BaseListStore {
   fillData = async (categoryId?: string) => {
     if (!categoryId) this.setItems([]);
     const { ok, data } = await categorySvc.getCategoryProducts(categoryId);
-    console.log({ ok, data });
     if (ok) this.setItems(data);
   };
   // endregion

@@ -33,7 +33,6 @@ export class BaseListStore {
   }
 
   get hasItems(): boolean {
-    console.log(this.items.length);
     return !!this.items.length;
   }
 

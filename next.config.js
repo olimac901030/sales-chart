@@ -15,9 +15,6 @@ const nextConfig = {
       preventFullImport: true
     }
   },
-  output: 'standalone',
-  async redirects() {
-    return [];
-  }
+  output: 'standalone'
 };
 module.exports = nextConfig;

@@ -37,7 +37,6 @@ export class BaseRest implements Rest {
     await connect();
     this.#req = req;
     this.#res = res;
-    console.log(`[${req.method}] ${req.url}`);
     return this[this.method]();
   };
 

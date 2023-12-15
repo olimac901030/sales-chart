@@ -48,9 +48,6 @@ export const Select = observer(function ({ options, label, name, disabled, loadi
         label={label}
         onChange={onChangeAction}
       >
-        {/*<MenuItem value="undefined">
-          <em>None</em>
-        </MenuItem>*/}
         {items}
       </Input>
     </FormControl>
