@@ -53,6 +53,7 @@ export class SalesReportStore {
     void productStr.loadItems(value);
   };
   onChangeProduct = (value: string) => {
+    console.log('onChangeProduct: ', value);
     this.form.brand.reset();
     void brandStr.loadItems(value);
   };

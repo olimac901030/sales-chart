@@ -4,13 +4,14 @@ import { IBrand } from '~/brand.type';
 export class ProductController {
   getBrandsById = async (id: string) => {
     const product = await ProductRepository.readById(id);
-    if (!product?.brands) return [];
-    return product.brands.map((brand: IBrand) => {
-      return {
-        id: brand._id,
-        name: brand.name
-      };
-    });
+    return (
+      product?.brands?.map((brand: IBrand) => {
+        return {
+          id: brand._id,
+          name: brand.name
+        };
+      }) || []
+    );
   };
 }
 
