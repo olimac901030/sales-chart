@@ -1,8 +1,8 @@
 import mongoose, { model, Model, Schema } from 'mongoose';
-import { ICategories } from '~/categories.type';
+import { ICategory } from '~/category.type';
 
-type CategoriesModelType = Model<ICategories>;
-const CategoriesSchema = new Schema<ICategories, CategoriesModelType>(
+type CategoryModelType = Model<ICategory>;
+const CategorySchema = new Schema<ICategory, CategoryModelType>(
   {
     name: {
       type: Schema.Types.String,
@@ -12,10 +12,10 @@ const CategoriesSchema = new Schema<ICategories, CategoriesModelType>(
   { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
-CategoriesSchema.virtual('products', {
-  ref: 'Products',
+CategorySchema.virtual('products', {
+  ref: 'Product',
   localField: '_id',
-  foreignField: 'categories'
+  foreignField: 'category'
 });
-export const CategoriesModel =
-  mongoose.models?.Categories || model<ICategories, CategoriesModelType>('Categories', CategoriesSchema);
+export const CategoryModel =
+  mongoose.models?.Category || model<ICategory, CategoryModelType>('Category', CategorySchema);

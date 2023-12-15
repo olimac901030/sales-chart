@@ -1,7 +1,7 @@
 import { BaseRest } from '$common/base.rest';
 import { categoryCtrl } from '$ctrl/category.controller';
 
-export class CategoriesRest extends BaseRest {
+export class CategoryRest extends BaseRest {
   constructor() {
     super();
   }
@@ -15,4 +15,4 @@ export class CategoriesRest extends BaseRest {
   };
 }
 
-export const categoriesRest = new CategoriesRest();
+export const categoryRest = new CategoryRest();

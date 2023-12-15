@@ -1,25 +1,24 @@
 import mongoose, { model, Model, Schema } from 'mongoose';
-import { IProducts } from '~/products.type';
+import { IProduct } from '~/product.type';
 
-type ProductsModelType = Model<IProducts>;
-const ProductsSchema = new Schema<IProducts, ProductsModelType>(
+type ProductModelType = Model<IProduct>;
+const ProductSchema = new Schema<IProduct, ProductModelType>(
   {
     name: {
       type: Schema.Types.String,
       unique: true
     },
-    categories: {
+    category: {
       type: Schema.Types.ObjectId,
-      ref: 'Categories'
+      ref: 'Category'
     }
   },
   { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
-ProductsSchema.virtual('brands', {
-  ref: 'Brands',
+ProductSchema.virtual('brands', {
+  ref: 'Brand',
   localField: '_id',
-  foreignField: 'products'
+  foreignField: 'product'
 });
-export const ProductsModel =
-  mongoose.models?.Products || model<IProducts, ProductsModelType>('Products', ProductsSchema);
+export const ProductModel = mongoose.models?.Product || model<IProduct, ProductModelType>('Product', ProductSchema);

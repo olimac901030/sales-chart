@@ -1,7 +1,7 @@
 import { BaseRest } from '$common/base.rest';
-import { categoriesCtrl } from '$ctrl/categories.controller';
+import { ProductCtrl } from '$ctrl/product.controller';
 
-export class CategoriesRest extends BaseRest {
+export class ProductsRest extends BaseRest {
   constructor() {
     super();
   }
@@ -10,7 +10,7 @@ export class CategoriesRest extends BaseRest {
       const {
         query: { id }
       } = this.req;
-      const response = await categoriesCtrl.getProductsById(String(id));
+      const response = await ProductCtrl.getBrandsById(String(id));
       return this.success(response);
     } catch (e) {
       return this.fail(e as never);
@@ -18,4 +18,4 @@ export class CategoriesRest extends BaseRest {
   };
 }
 
-export const categoriesRest = new CategoriesRest();
+export const productsRest = new ProductsRest();

@@ -1,10 +1,10 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose, { ConnectionStates } from 'mongoose';
-import { CategoriesModel } from '$model/categories.model';
-import { ProductsModel } from '$model/products.model';
+import { CategoryModel } from '$model/category.model';
+import { ProductModel } from '$model/product.model';
+import { BrandModel } from '$model/brand.model';
 
 let mongoMemoryServer: MongoMemoryServer = undefined as unknown as MongoMemoryServer;
-const isDataLoaded = false;
 
 const STATUS = [ConnectionStates.disconnected, ConnectionStates.disconnecting, ConnectionStates.uninitialized];
 
@@ -56,8 +56,13 @@ async function populate(): Promise<any> {
   // Creating sample products
 
   // Creating sample category and associating products
-  const category1 = await CategoriesModel.create({ name: 'Cereales' });
+  const category1 = await CategoryModel.create({ name: 'Cereales' });
 
-  await ProductsModel.create({ name: 'Arroz', categories: category1.id });
-  await ProductsModel.create({ name: 'Maiz', categories: category1.id });
+  const product1 = await ProductModel.create({ name: 'Arroz', category: category1.id });
+  const product2 = await ProductModel.create({ name: 'Maiz', category: category1.id });
+
+  await BrandModel.create({ name: 'Nestle', product: product1.id });
+  await BrandModel.create({ name: 'Britania', product: product1.id });
+  await BrandModel.create({ name: 'Kellogs', product: product2.id });
+  await BrandModel.create({ name: 'Cocacola', product: product2.id });
 }

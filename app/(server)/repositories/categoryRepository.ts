@@ -1,16 +1,16 @@
-import { CategoriesModel } from '$model/categories.model';
-import { ICategories } from '~/categories.type';
-import { ProductsModel } from '$model/product.model';
+import { CategoryModel } from '$model/category.model';
+import { ICategory } from '~/category.type';
+import { ProductModel } from '$model/product.model';
 
-async function read(): Promise<ICategories[] | null> {
-  return CategoriesModel.find({ id: { $ne: -1 } }).select('name');
+async function read(): Promise<ICategory[] | null> {
+  return CategoryModel.find({ id: { $ne: -1 } }).select('name');
   //   .populate({ path: 'peripherals', model: PeripheralModel });
 }
 
-async function readById(id: string): Promise<ICategories | null> {
-  return CategoriesModel.findById(id)
+async function readById(id: string): Promise<ICategory | null> {
+  return CategoryModel.findById(id)
     .select('name products')
-    .populate({ path: 'products', model: ProductsModel }) as Promise<ICategories | null>;
+    .populate({ path: 'products', model: ProductModel }) as Promise<ICategory | null>;
 }
 
-export const CategoriesRepository = { read, readById };
+export const CategoryRepository = { read, readById };

@@ -1,12 +1,12 @@
 import { serviceRestFactory } from '~svc/base.service';
 import { EnvClient } from '@config/env.client';
-import { ICategories } from '~/categories.type';
+import { ICategory } from '~/category.type';
 
 function CategoryService() {
   const { get } = serviceRestFactory(`${EnvClient.API}/categories`);
 
   return {
-    getAll: () => get<ICategories[], undefined>(``)
+    getAll: () => get<ICategory[], undefined>(``)
   };
 }
 

@@ -1,5 +1,5 @@
-export interface IProducts {
+export interface IBrand {
   _id: string;
   name: string;
-  categories?: string;
+  product?: string;
 }

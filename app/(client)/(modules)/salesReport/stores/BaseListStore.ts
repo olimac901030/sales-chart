@@ -1,9 +1,9 @@
 import { action, computed, makeObservable, observable } from 'mobx';
 import { OptionType } from '@/option.type';
-import { ICategories } from '~/categories.type';
+import { ICategory } from '~/category.type';
 
 export class BaseListStore {
-  items: ICategories[] = [];
+  items: ICategory[] = [];
 
   constructor() {
     makeObservable(this, {
@@ -17,7 +17,7 @@ export class BaseListStore {
 
   // region GETTERS & SETTERS
 
-  setItems = (items: ICategories[] = []) => {
+  setItems = (items: ICategory[] = []) => {
     this.items = items;
   };
 
@@ -29,7 +29,7 @@ export class BaseListStore {
 
   // region METHODS
 
-  loadItems = async (): Promise<ICategories[] | void> => {
+  loadItems = async (): Promise<ICategory[] | void> => {
     return Promise.resolve([]);
   };
   // endregion

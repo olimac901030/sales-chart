@@ -1,7 +1,7 @@
 import { ProductRepository } from '$repo/product.repository';
 
-export class ProductsController {
+export class ProductController {
   getBrandsById = async (id: string) => await ProductRepository.readById(id);
 }
 
-export const ProductsCtrl = new ProductsController();
+export const ProductCtrl = new ProductController();

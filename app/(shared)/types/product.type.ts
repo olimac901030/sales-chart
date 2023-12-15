@@ -1,5 +1,5 @@
-export interface IProducts {
+export interface IProduct {
   _id: string;
   name: string;
-  categories?: string;
+  category?: string;
 }
