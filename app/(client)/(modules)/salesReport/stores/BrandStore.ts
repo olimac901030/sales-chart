@@ -1,4 +1,5 @@
 import { BaseListStore } from './BaseListStore';
+import { productSvc } from '../services/product.service';
 
 export class BrandStore extends BaseListStore {
   constructor() {
@@ -11,9 +12,11 @@ export class BrandStore extends BaseListStore {
 
   // region METHODS
 
-  loadItems = async () => {
-    // const { ok, data } = await categorySvc.getAll();
-    // if (ok) this.setItems(data);
+  loadItems = async (productId?: string) => {
+    if (!productId) this.setItems([]);
+    const { ok, data } = await productSvc.getProductBrands(productId);
+    console.log({ ok, data });
+    if (ok) this.setItems(data);
   };
   // endregion
 

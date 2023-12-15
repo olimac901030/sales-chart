@@ -2,6 +2,7 @@ import { action, makeObservable, observable } from 'mobx';
 import { TFormSaleFilters } from '~/gateway.type';
 import { formFactory } from '@form/formFactory';
 import { productStr } from './ProductStore';
+import { brandStr } from './BrandStore';
 
 export class SalesReportStore {
   form = formFactory<TFormSaleFilters>({ category: '', product: '', brand: '' });
@@ -50,6 +51,10 @@ export class SalesReportStore {
     this.form.brand.reset();
     this.form.product.reset();
     void productStr.loadItems(value);
+  };
+  onChangeProduct = (value: string) => {
+    this.form.brand.reset();
+    void brandStr.loadItems(value);
   };
   // endregion
 }

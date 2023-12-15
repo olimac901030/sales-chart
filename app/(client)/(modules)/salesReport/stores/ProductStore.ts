@@ -14,7 +14,6 @@ export class ProductStore extends BaseListStore {
 
   loadItems = async (categoryId?: string) => {
     if (!categoryId) this.setItems([]);
-    console.log(categoryId);
     const { ok, data } = await categorySvc.getCategoryProducts(categoryId);
     console.log({ ok, data });
     if (ok) this.setItems(data);
