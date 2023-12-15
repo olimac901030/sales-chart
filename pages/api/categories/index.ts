@@ -1,3 +1,3 @@
-import { categoryRest } from '$rest/categoriesRest';
+import { categoryRest } from '$rest/categories.rest';
 
 export default categoryRest.call;

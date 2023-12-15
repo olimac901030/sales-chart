@@ -1,3 +1,3 @@
-import { productsRest } from '$rest/productBrands.rest';
+import { productRest } from '$rest/productBrands.rest';
 
-export default productsRest.call;
+export default productRest.call;
