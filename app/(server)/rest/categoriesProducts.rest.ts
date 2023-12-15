@@ -7,7 +7,10 @@ export class CategoriesRest extends BaseRest {
   }
   GET = async () => {
     try {
-      const response = await categoriesCtrl.getAll();
+      const {
+        query: { id }
+      } = this.req;
+      const response = await categoriesCtrl.getProductsById(String(id));
       return this.success(response);
     } catch (e) {
       return this.fail(e as never);

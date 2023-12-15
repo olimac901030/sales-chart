@@ -12,11 +12,10 @@ const CategoriesSchema = new Schema<ICategories, CategoriesModelType>(
   { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
-// GatewaySchema.virtual('peripherals', {
-//   ref: 'Peripheral',
-//   localField: '_id',
-//   foreignField: 'gateway',
-//   count: true
-// });
+CategoriesSchema.virtual('products', {
+  ref: 'Products',
+  localField: '_id',
+  foreignField: 'categories'
+});
 export const CategoriesModel =
-  mongoose.models?.Gateway || model<ICategories, CategoriesModelType>('Categories', CategoriesSchema);
+  mongoose.models?.Categories || model<ICategories, CategoriesModelType>('Categories', CategoriesSchema);

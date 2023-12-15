@@ -1,27 +1,18 @@
 import { CategoriesModel } from '$model/categories.model';
 import { ICategories } from '~/categories.type';
-
-const POPULATE = 'name';
+import { PeripheralModel } from '$model/peripheral.model';
+import { IGateway } from '~/gateway.type';
+import { ProductsModel } from '$model/products.model';
 
 async function read(): Promise<ICategories[] | null> {
-  return CategoriesModel.find({ id: { $ne: -1 } }).select(POPULATE);
+  return CategoriesModel.find({ id: { $ne: -1 } }).select('name');
   //   .populate({ path: 'peripherals', model: PeripheralModel });
 }
 
-/**
- * Inserts fake data into the collection using the Mongoose model.
- *
- * @return {Promise} A promise that resolves when the insertion is complete.
- */
-async function populate(): Promise<any> {
-  const dataToInsert = [
-    { name: 'Comida' },
-    { name: 'Electrodomésticos' }
-    // Add more data as needed
-  ];
-
-  // Insert the data into the collection using the Mongoose model
-  await CategoriesModel.insertMany(dataToInsert);
+async function readById(id: string): Promise<ICategories | null> {
+  return CategoriesModel.findById(id)
+    .select('name products')
+    .populate({ path: 'products', model: ProductsModel }) as Promise<ICategories | null>;
 }
 
-export const CategoriesRepository = { read, populate };
+export const CategoriesRepository = { read, readById };
