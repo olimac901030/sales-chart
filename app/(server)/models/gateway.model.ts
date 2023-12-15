@@ -1,8 +1,8 @@
 import mongoose, { model, Model, Schema } from 'mongoose';
-import { IGateway } from '~/gateway.type';
+import { TFormSaleFilters } from '~/gateway.type';
 
-type GatewayModelType = Model<IGateway>;
-const GatewaySchema = new Schema<IGateway, GatewayModelType>(
+type GatewayModelType = Model<TFormSaleFilters>;
+const GatewaySchema = new Schema<TFormSaleFilters, GatewayModelType>(
   {
     serial: {
       type: Schema.Types.String,
@@ -24,4 +24,5 @@ GatewaySchema.virtual('peripherals', {
   foreignField: 'gateway',
   count: true
 });
-export const GatewayModel = mongoose.models?.Gateway || model<IGateway, GatewayModelType>('Gateway', GatewaySchema);
+export const GatewayModel =
+  mongoose.models?.Gateway || model<TFormSaleFilters, GatewayModelType>('Gateway', GatewaySchema);

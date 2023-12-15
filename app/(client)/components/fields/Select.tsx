@@ -28,10 +28,15 @@ export const Select = observer(function ({ options, label, name }: ISelect) {
     state.onChange(e.target.value);
   }, []);
 
+  console.log(state);
+
   return (
-    <FormControl fullWidth size="small">
+    <FormControl fullWidth size="small" sx={{ maxWidth: '200px' }}>
       <InputLabel id={`${state.id}-label`}>{label}</InputLabel>
       <Input labelId={`${state.id}-label`} id={state.id} value={state.value || ''} label={label} onChange={onChange}>
+        <MenuItem value="undefined">
+          <em>None</em>
+        </MenuItem>
         {items}
       </Input>
     </FormControl>

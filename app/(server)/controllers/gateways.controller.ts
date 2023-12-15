@@ -1,9 +1,9 @@
-import { IGateway } from '~/gateway.type';
+import { TFormSaleFilters } from '~/gateway.type';
 import { GatewayRepository } from '$repo/gateway.repository';
 import { peripheralCtrl } from '$ctrl/peripheral.controller';
 
 export class GatewayController {
-  add = async (gateway: IGateway) => GatewayRepository.create(gateway);
+  add = async (gateway: TFormSaleFilters) => GatewayRepository.create(gateway);
   getAll = async () => GatewayRepository.read();
   getById = async (id: string) => GatewayRepository.readById(id);
   remove = async (id: string) => {
@@ -11,7 +11,7 @@ export class GatewayController {
     const removePeripheral = peripheralCtrl.removeByGateway(id);
     return await Promise.all([removeGateway, removePeripheral]);
   };
-  update = async (id: string, data: IGateway) => GatewayRepository.update(id, data);
+  update = async (id: string, data: TFormSaleFilters) => GatewayRepository.update(id, data);
   validateGatewayCount = async (id: string) => {
     const e: any = new Error(`The gateway specified is not reachable`);
     e.statusCode = 500;

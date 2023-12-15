@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    appDir: true,
     typedRoutes: true
   },
   compiler: { removeConsole: process.env.NODE_ENV === 'production' },

@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
-import { Container, Divider, Grid, Stack, SxProps, Typography } from '@ui/index';
-import { GatewayLayout } from '#gateway/index';
+import { Stack, SxProps } from '@ui/index';
+import { NavBar } from './(modules)/salesReport/components/NavBar';
+import { Filters } from './(modules)/salesReport/components/Filters';
+import { Graph } from './(modules)/salesReport/components/Graph';
 
 export const metadata: Metadata = {
-  title: 'Home'
+  title: 'Sales Report'
 };
 
 const SX_CONTAINER: SxProps = {
@@ -31,15 +33,9 @@ const SX_CONTAINER: SxProps = {
 export default function HomePage() {
   return (
     <Stack sx={SX_CONTAINER}>
-      <Container>
-        <Typography color="primary" variant="h4" fontSize="36px">
-          Gateways Manager
-        </Typography>
-        <Divider sx={{ my: '2rem' }} />
-        <Grid gridTemplateColumns="1fr">
-          <GatewayLayout />
-        </Grid>
-      </Container>
+      <NavBar />
+      <Filters />
+      <Graph />
     </Stack>
   );
 }

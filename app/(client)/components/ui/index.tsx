@@ -41,5 +41,6 @@ export { default as AddIco } from '@mui/icons-material/PlaylistAddOutlined';
 export { default as CloseIco } from '@mui/icons-material/CloseOutlined';
 export { default as CancelIco } from '@mui/icons-material/DoDisturbAltOutlined';
 export { default as SaveIco } from '@mui/icons-material/SaveOutlined';
-
+export { default as AccountIco } from '@mui/icons-material/AccountCircle';
+export { default as MenuIco } from '@mui/icons-material/Menu';
 // endregion

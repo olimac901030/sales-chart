@@ -1,7 +1,1 @@
-export interface IGateway {
-  _id: string;
-  ip: string;
-  name: string;
-  peripherals: number;
-  serial: string;
-}
+export type TFormSaleFilters = { category: string; product: string; brand: string };
