@@ -24,7 +24,12 @@ export const connect = async () => {
     } else {
       await mongoose.connect(mongoMemoryServer.getUri(), {});
     }
-    await populate();
+    try {
+      await populate();
+    } catch (e) {
+      console.log(e);
+      console.log('The test data must be loaded');
+    }
   }
 };
 
